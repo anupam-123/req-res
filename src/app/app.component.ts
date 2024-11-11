@@ -11,10 +11,10 @@ import { ResService } from './res.service';
 export class AppComponent {
   posts: any[] = [];
 
-  constructor(private ResServe: ResService) { }
+  constructor(private resServe: ResService) { }
 
   ngOnInit(): void {
-    this.ResServe.getPosts().subscribe(data => {
+    this.resServe.getPosts().subscribe(data => {
       this.posts = data;
     });
   }
