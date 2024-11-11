@@ -1,13 +1,21 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { ResService } from './res.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  styleUrl: './app.component.css',
+  providers:[ResService]
 })
 export class AppComponent {
-  title = 'angular-request-response';
+  posts: any[] = [];
+
+  constructor(private ResServe: ResService) { }
+
+  ngOnInit(): void {
+    this.ResServe.getPosts().subscribe(data => {
+      this.posts = data;
+    });
+  }
 }
